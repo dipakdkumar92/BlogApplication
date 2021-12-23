@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -11,7 +12,7 @@
 </head>  
 <body class=""> 
     <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Blogs</a>
+    <a class="navbar-brand" href="#">{% trans 'Blogs' %}</a>
     </nav>
   
     {% block content %}

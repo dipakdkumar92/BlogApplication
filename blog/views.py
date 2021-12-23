@@ -1,11 +1,14 @@
 from django.shortcuts import get_object_or_404, render
 from blog.forms import ArticleForm
-
+from django.conf import settings
 from blog.models import Article, Tag
 from django.shortcuts import redirect
+from django.utils import translation
 
 
 def index(request):
+    user_language = settings.LANGUAGE_CODE
+    translation.activate(user_language)
     tags = request.GET.keys()
     articles = None
     if tags:

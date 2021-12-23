@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
 
 <div class="container">
   <div class="row mt-4 mb-4">
     <div class="col-md">
-      <a href="{% url 'blog:create' %}" class="btn btn-primary">Create Article</a>
+      <a href="{% url 'blog:create' %}" class="btn btn-primary">{% trans 'Create Article' %}</a>
     </div>
 
     <form>
@@ -26,7 +28,7 @@
           {% endif %}
         {% endfor %}
       </div>
-      <button class="btn btn-primary mt-4 d-inline" type="submit">Filter</button>
+      <button class="btn btn-primary mt-4 d-inline" type="submit">{% trans 'Filter' %}</button>
     </form>
   </div>
   <div class="row">
@@ -37,10 +39,9 @@
         <img src="{{ article.image.url }}" alt="..." class="img-thumbnail">
       </div>
       <div class="col-md">
-          <p>{{ article.content | safe | truncatewords:8 }}
-            <a href="{% url 'blog:detail' article.id %}" class="badge-primary">read more</a>
-          </p>
-          
+        <p>{{ article.content | safe | truncatewords:8 }}
+          <a href="{% url 'blog:detail' article.id %}" class="badge-primary">{% trans 'read more' %}</a>
+        </p>
       </div>
     </div>
   {% endfor %}
