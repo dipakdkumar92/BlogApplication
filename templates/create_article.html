@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-10 mx-auto d-block mt-4">
+    <form method="POST" class="ml-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Title </label><br>
+            {{ form.title }}
+        </div><br>
+        <div class="form-group">
+            <label>Content </label><br>
+            {{ form.content }}
+        </div><br>
+        <div class="form-group">
+            <label>Image </label>
+            {{ form.image }}
+        </div><br>
+        <div class="form-group">
+            <label>Tags</label>
+            {{ form.tags }}
+        </div><br>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
