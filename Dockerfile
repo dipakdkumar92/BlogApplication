@@ -7,6 +7,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 ENV DJANGO_SETTINGS_MODULE=project.settings
 RUN python manage.py collectstatic --noinput
+RUN python manage.py migrate
 
 EXPOSE 80
 
