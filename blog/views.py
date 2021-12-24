@@ -27,9 +27,11 @@ def create(request):
     if request.method == 'POST':
         article_form = ArticleForm(request.POST, request.FILES)
         article = article_form.save()
-        for tag_id in request.POST.get('tags'):
-            tag = Tag.objects.get(id=tag_id)
-            article.tags.add(tag)
+        tags = request.POST.get('tags')
+        if tags:
+            for tag_id in request.POST.get('tags'):
+                tag = Tag.objects.get(id=tag_id)
+                article.tags.add(tag)
         return redirect("blog:index")
     return render(request, 'create_article.html', {"form": ArticleForm()})
 
